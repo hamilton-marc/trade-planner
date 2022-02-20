@@ -1,0 +1,78 @@
+{
+  "applications": "*",
+  "changelogDate": "20220220224507",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "trading_plan",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String",
+      "fieldValidateRules": ["required", "minlength"],
+      "fieldValidateRulesMinlength": "3"
+    },
+    {
+      "fieldName": "underlying",
+      "fieldType": "String",
+      "fieldValidateRules": ["required", "minlength"],
+      "fieldValidateRulesMinlength": "1"
+    },
+    {
+      "fieldName": "underlyingDescription",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "underlyingOutlook",
+      "fieldType": "TrendOutlook",
+      "fieldValues": "Unclear,Up,Down,Sidways,Other"
+    },
+    {
+      "fieldName": "underlyingOutlookOtherDesc",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "underlyingTrend",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "marketOutlook",
+      "fieldType": "TrendOutlook",
+      "fieldValues": "Unclear,Up,Down,Sidways,Other"
+    },
+    {
+      "fieldName": "marketOutlookOtherDesc",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "marketTrend",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "timeFrame",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "strategy",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "notes",
+      "fieldType": "String"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "TradingPlan",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityField": "login",
+      "otherEntityName": "user",
+      "otherEntityRelationshipName": "tradingPlan",
+      "relationshipName": "user",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "no"
+}

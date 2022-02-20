@@ -48,6 +48,8 @@ public class CacheConfiguration {
             createCache(cm, com.unionhills.tradeplanner.domain.User.class.getName());
             createCache(cm, com.unionhills.tradeplanner.domain.Authority.class.getName());
             createCache(cm, com.unionhills.tradeplanner.domain.User.class.getName() + ".authorities");
+            createCache(cm, com.unionhills.tradeplanner.domain.TradingPlan.class.getName());
+            createCache(cm, com.unionhills.tradeplanner.domain.PlanTransaction.class.getName());
             // jhipster-needle-ehcache-add-entry
         };
     }

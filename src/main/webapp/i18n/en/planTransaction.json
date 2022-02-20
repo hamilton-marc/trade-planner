@@ -1,0 +1,34 @@
+{
+  "tradePlannerApp": {
+    "planTransaction": {
+      "home": {
+        "title": "Plan Transactions",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Plan Transaction",
+        "createOrEditLabel": "Create or edit a Plan Transaction",
+        "notFound": "No Plan Transactions found"
+      },
+      "created": "A new Plan Transaction is created with identifier {{ param }}",
+      "updated": "A Plan Transaction is updated with identifier {{ param }}",
+      "deleted": "A Plan Transaction is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Plan Transaction {{ id }}?"
+      },
+      "detail": {
+        "title": "Plan Transaction"
+      },
+      "id": "ID",
+      "numberOfContracts": "Number Of Contracts",
+      "costPerContract": "Cost Per Contract",
+      "stopLoss": "Stop Loss",
+      "technicalStopLoss": "Technical Stop Loss",
+      "timeStop": "Time Stop",
+      "plannedEntryDate": "Planned Entry Date",
+      "plannedExitDate": "Planned Exit Date",
+      "entryReason": "Entry Reason",
+      "exitReason": "Exit Reason",
+      "orderStatus": "Order Status",
+      "tradingPlan": "Trading Plan"
+    }
+  }
+}

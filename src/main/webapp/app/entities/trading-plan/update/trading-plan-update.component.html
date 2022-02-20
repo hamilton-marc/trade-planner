@@ -1,0 +1,228 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-trading-plan-heading"
+        data-cy="TradingPlanCreateUpdateHeading"
+        jhiTranslate="tradePlannerApp.tradingPlan.home.createOrEditLabel"
+      >
+        Create or edit a Trading Plan
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="form-group" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-control-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="tradePlannerApp.tradingPlan.name" for="field_name">Name</label>
+          <input type="text" class="form-control" name="name" id="field_name" data-cy="name" formControlName="name" />
+          <div *ngIf="editForm.get('name')!.invalid && (editForm.get('name')!.dirty || editForm.get('name')!.touched)">
+            <small class="form-text text-danger" *ngIf="editForm.get('name')?.errors?.required" jhiTranslate="entity.validation.required">
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('name')?.errors?.minlength"
+              jhiTranslate="entity.validation.minlength"
+              [translateValues]="{ min: 3 }"
+            >
+              This field is required to be at least 3 characters.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="tradePlannerApp.tradingPlan.underlying" for="field_underlying">Underlying</label>
+          <input
+            type="text"
+            class="form-control"
+            name="underlying"
+            id="field_underlying"
+            data-cy="underlying"
+            formControlName="underlying"
+          />
+          <div *ngIf="editForm.get('underlying')!.invalid && (editForm.get('underlying')!.dirty || editForm.get('underlying')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('underlying')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('underlying')?.errors?.minlength"
+              jhiTranslate="entity.validation.minlength"
+              [translateValues]="{ min: 1 }"
+            >
+              This field is required to be at least 1 characters.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label
+            class="form-control-label"
+            jhiTranslate="tradePlannerApp.tradingPlan.underlyingDescription"
+            for="field_underlyingDescription"
+            >Underlying Description</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="underlyingDescription"
+            id="field_underlyingDescription"
+            data-cy="underlyingDescription"
+            formControlName="underlyingDescription"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="tradePlannerApp.tradingPlan.underlyingOutlook" for="field_underlyingOutlook"
+            >Underlying Outlook</label
+          >
+          <select
+            class="form-control"
+            name="underlyingOutlook"
+            formControlName="underlyingOutlook"
+            id="field_underlyingOutlook"
+            data-cy="underlyingOutlook"
+          >
+            <option [ngValue]="null">{{ 'tradePlannerApp.TrendOutlook.null' | translate }}</option>
+            <option *ngFor="let trendOutlook of trendOutlookValues" [value]="trendOutlook">
+              {{ 'tradePlannerApp.TrendOutlook.' + trendOutlook | translate }}
+            </option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label
+            class="form-control-label"
+            jhiTranslate="tradePlannerApp.tradingPlan.underlyingOutlookOtherDesc"
+            for="field_underlyingOutlookOtherDesc"
+            >Underlying Outlook Other Desc</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="underlyingOutlookOtherDesc"
+            id="field_underlyingOutlookOtherDesc"
+            data-cy="underlyingOutlookOtherDesc"
+            formControlName="underlyingOutlookOtherDesc"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="tradePlannerApp.tradingPlan.underlyingTrend" for="field_underlyingTrend"
+            >Underlying Trend</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="underlyingTrend"
+            id="field_underlyingTrend"
+            data-cy="underlyingTrend"
+            formControlName="underlyingTrend"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="tradePlannerApp.tradingPlan.marketOutlook" for="field_marketOutlook"
+            >Market Outlook</label
+          >
+          <select
+            class="form-control"
+            name="marketOutlook"
+            formControlName="marketOutlook"
+            id="field_marketOutlook"
+            data-cy="marketOutlook"
+          >
+            <option [ngValue]="null">{{ 'tradePlannerApp.TrendOutlook.null' | translate }}</option>
+            <option *ngFor="let trendOutlook of trendOutlookValues" [value]="trendOutlook">
+              {{ 'tradePlannerApp.TrendOutlook.' + trendOutlook | translate }}
+            </option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label
+            class="form-control-label"
+            jhiTranslate="tradePlannerApp.tradingPlan.marketOutlookOtherDesc"
+            for="field_marketOutlookOtherDesc"
+            >Market Outlook Other Desc</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="marketOutlookOtherDesc"
+            id="field_marketOutlookOtherDesc"
+            data-cy="marketOutlookOtherDesc"
+            formControlName="marketOutlookOtherDesc"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="tradePlannerApp.tradingPlan.marketTrend" for="field_marketTrend"
+            >Market Trend</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="marketTrend"
+            id="field_marketTrend"
+            data-cy="marketTrend"
+            formControlName="marketTrend"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="tradePlannerApp.tradingPlan.timeFrame" for="field_timeFrame">Time Frame</label>
+          <input type="text" class="form-control" name="timeFrame" id="field_timeFrame" data-cy="timeFrame" formControlName="timeFrame" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="tradePlannerApp.tradingPlan.strategy" for="field_strategy">Strategy</label>
+          <input type="text" class="form-control" name="strategy" id="field_strategy" data-cy="strategy" formControlName="strategy" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="tradePlannerApp.tradingPlan.notes" for="field_notes">Notes</label>
+          <input type="text" class="form-control" name="notes" id="field_notes" data-cy="notes" formControlName="notes" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="tradePlannerApp.tradingPlan.user" for="field_user">User</label>
+          <select class="form-control" id="field_user" data-cy="user" name="user" formControlName="user">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="userOption.id === editForm.get('user')!.value?.id ? editForm.get('user')!.value : userOption"
+              *ngFor="let userOption of usersSharedCollection; trackBy: trackUserById"
+            >
+              {{ userOption.login }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

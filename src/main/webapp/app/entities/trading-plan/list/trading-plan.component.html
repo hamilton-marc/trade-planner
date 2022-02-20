@@ -1,0 +1,106 @@
+<div>
+  <h2 id="page-heading" data-cy="TradingPlanHeading">
+    <span jhiTranslate="tradePlannerApp.tradingPlan.home.title">Trading Plans</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info mr-2" (click)="loadAll()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="tradePlannerApp.tradingPlan.home.refreshListLabel">Refresh List</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-trading-plan"
+        [routerLink]="['/trading-plan/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="tradePlannerApp.tradingPlan.home.createLabel"> Create a new Trading Plan </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="tradingPlans?.length === 0">
+    <span jhiTranslate="tradePlannerApp.tradingPlan.home.notFound">No tradingPlans found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="tradingPlans && tradingPlans.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr>
+          <th scope="col"><span jhiTranslate="global.field.id">ID</span></th>
+          <th scope="col"><span jhiTranslate="tradePlannerApp.tradingPlan.name">Name</span></th>
+          <th scope="col"><span jhiTranslate="tradePlannerApp.tradingPlan.underlying">Underlying</span></th>
+          <th scope="col"><span jhiTranslate="tradePlannerApp.tradingPlan.underlyingDescription">Underlying Description</span></th>
+          <th scope="col"><span jhiTranslate="tradePlannerApp.tradingPlan.underlyingOutlook">Underlying Outlook</span></th>
+          <th scope="col">
+            <span jhiTranslate="tradePlannerApp.tradingPlan.underlyingOutlookOtherDesc">Underlying Outlook Other Desc</span>
+          </th>
+          <th scope="col"><span jhiTranslate="tradePlannerApp.tradingPlan.underlyingTrend">Underlying Trend</span></th>
+          <th scope="col"><span jhiTranslate="tradePlannerApp.tradingPlan.marketOutlook">Market Outlook</span></th>
+          <th scope="col"><span jhiTranslate="tradePlannerApp.tradingPlan.marketOutlookOtherDesc">Market Outlook Other Desc</span></th>
+          <th scope="col"><span jhiTranslate="tradePlannerApp.tradingPlan.marketTrend">Market Trend</span></th>
+          <th scope="col"><span jhiTranslate="tradePlannerApp.tradingPlan.timeFrame">Time Frame</span></th>
+          <th scope="col"><span jhiTranslate="tradePlannerApp.tradingPlan.strategy">Strategy</span></th>
+          <th scope="col"><span jhiTranslate="tradePlannerApp.tradingPlan.notes">Notes</span></th>
+          <th scope="col"><span jhiTranslate="tradePlannerApp.tradingPlan.user">User</span></th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let tradingPlan of tradingPlans; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/trading-plan', tradingPlan.id, 'view']">{{ tradingPlan.id }}</a>
+          </td>
+          <td>{{ tradingPlan.name }}</td>
+          <td>{{ tradingPlan.underlying }}</td>
+          <td>{{ tradingPlan.underlyingDescription }}</td>
+          <td jhiTranslate="{{ 'tradePlannerApp.TrendOutlook.' + tradingPlan.underlyingOutlook }}">{{ tradingPlan.underlyingOutlook }}</td>
+          <td>{{ tradingPlan.underlyingOutlookOtherDesc }}</td>
+          <td>{{ tradingPlan.underlyingTrend }}</td>
+          <td jhiTranslate="{{ 'tradePlannerApp.TrendOutlook.' + tradingPlan.marketOutlook }}">{{ tradingPlan.marketOutlook }}</td>
+          <td>{{ tradingPlan.marketOutlookOtherDesc }}</td>
+          <td>{{ tradingPlan.marketTrend }}</td>
+          <td>{{ tradingPlan.timeFrame }}</td>
+          <td>{{ tradingPlan.strategy }}</td>
+          <td>{{ tradingPlan.notes }}</td>
+          <td>
+            {{ tradingPlan.user?.login }}
+          </td>
+          <td class="text-right">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/trading-plan', tradingPlan.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/trading-plan', tradingPlan.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(tradingPlan)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

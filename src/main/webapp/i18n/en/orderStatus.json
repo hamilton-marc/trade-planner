@@ -1,0 +1,10 @@
+{
+  "tradePlannerApp": {
+    "OrderStatus": {
+      "null": "",
+      "Planned": "Planned",
+      "Submitted": "Submitted",
+      "Filled": "Filled"
+    }
+  }
+}

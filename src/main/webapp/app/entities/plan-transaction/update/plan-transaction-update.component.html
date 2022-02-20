@@ -1,0 +1,191 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-plan-transaction-heading"
+        data-cy="PlanTransactionCreateUpdateHeading"
+        jhiTranslate="tradePlannerApp.planTransaction.home.createOrEditLabel"
+      >
+        Create or edit a Plan Transaction
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="form-group" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-control-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="tradePlannerApp.planTransaction.numberOfContracts" for="field_numberOfContracts"
+            >Number Of Contracts</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="numberOfContracts"
+            id="field_numberOfContracts"
+            data-cy="numberOfContracts"
+            formControlName="numberOfContracts"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="tradePlannerApp.planTransaction.costPerContract" for="field_costPerContract"
+            >Cost Per Contract</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="costPerContract"
+            id="field_costPerContract"
+            data-cy="costPerContract"
+            formControlName="costPerContract"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="tradePlannerApp.planTransaction.stopLoss" for="field_stopLoss">Stop Loss</label>
+          <input type="number" class="form-control" name="stopLoss" id="field_stopLoss" data-cy="stopLoss" formControlName="stopLoss" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="tradePlannerApp.planTransaction.technicalStopLoss" for="field_technicalStopLoss"
+            >Technical Stop Loss</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="technicalStopLoss"
+            id="field_technicalStopLoss"
+            data-cy="technicalStopLoss"
+            formControlName="technicalStopLoss"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="tradePlannerApp.planTransaction.timeStop" for="field_timeStop">Time Stop</label>
+          <div class="d-flex">
+            <input
+              id="field_timeStop"
+              data-cy="timeStop"
+              type="datetime-local"
+              class="form-control"
+              name="timeStop"
+              formControlName="timeStop"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="tradePlannerApp.planTransaction.plannedEntryDate" for="field_plannedEntryDate"
+            >Planned Entry Date</label
+          >
+          <div class="d-flex">
+            <input
+              id="field_plannedEntryDate"
+              data-cy="plannedEntryDate"
+              type="datetime-local"
+              class="form-control"
+              name="plannedEntryDate"
+              formControlName="plannedEntryDate"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="tradePlannerApp.planTransaction.plannedExitDate" for="field_plannedExitDate"
+            >Planned Exit Date</label
+          >
+          <div class="d-flex">
+            <input
+              id="field_plannedExitDate"
+              data-cy="plannedExitDate"
+              type="datetime-local"
+              class="form-control"
+              name="plannedExitDate"
+              formControlName="plannedExitDate"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="tradePlannerApp.planTransaction.entryReason" for="field_entryReason"
+            >Entry Reason</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="entryReason"
+            id="field_entryReason"
+            data-cy="entryReason"
+            formControlName="entryReason"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="tradePlannerApp.planTransaction.exitReason" for="field_exitReason"
+            >Exit Reason</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="exitReason"
+            id="field_exitReason"
+            data-cy="exitReason"
+            formControlName="exitReason"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="tradePlannerApp.planTransaction.orderStatus" for="field_orderStatus"
+            >Order Status</label
+          >
+          <select class="form-control" name="orderStatus" formControlName="orderStatus" id="field_orderStatus" data-cy="orderStatus">
+            <option [ngValue]="null">{{ 'tradePlannerApp.OrderStatus.null' | translate }}</option>
+            <option *ngFor="let orderStatus of orderStatusValues" [value]="orderStatus">
+              {{ 'tradePlannerApp.OrderStatus.' + orderStatus | translate }}
+            </option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="tradePlannerApp.planTransaction.tradingPlan" for="field_tradingPlan"
+            >Trading Plan</label
+          >
+          <select class="form-control" id="field_tradingPlan" data-cy="tradingPlan" name="tradingPlan" formControlName="tradingPlan">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="
+                tradingPlanOption.id === editForm.get('tradingPlan')!.value?.id ? editForm.get('tradingPlan')!.value : tradingPlanOption
+              "
+              *ngFor="let tradingPlanOption of tradingPlansSharedCollection; trackBy: trackTradingPlanById"
+            >
+              {{ tradingPlanOption.name }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

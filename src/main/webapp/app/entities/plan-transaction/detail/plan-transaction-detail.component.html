@@ -1,0 +1,76 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="planTransaction">
+      <h2 data-cy="planTransactionDetailsHeading">
+        <span jhiTranslate="tradePlannerApp.planTransaction.detail.title">Plan Transaction</span>
+      </h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ planTransaction.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="tradePlannerApp.planTransaction.numberOfContracts">Number Of Contracts</span></dt>
+        <dd>
+          <span>{{ planTransaction.numberOfContracts }}</span>
+        </dd>
+        <dt><span jhiTranslate="tradePlannerApp.planTransaction.costPerContract">Cost Per Contract</span></dt>
+        <dd>
+          <span>{{ planTransaction.costPerContract }}</span>
+        </dd>
+        <dt><span jhiTranslate="tradePlannerApp.planTransaction.stopLoss">Stop Loss</span></dt>
+        <dd>
+          <span>{{ planTransaction.stopLoss }}</span>
+        </dd>
+        <dt><span jhiTranslate="tradePlannerApp.planTransaction.technicalStopLoss">Technical Stop Loss</span></dt>
+        <dd>
+          <span>{{ planTransaction.technicalStopLoss }}</span>
+        </dd>
+        <dt><span jhiTranslate="tradePlannerApp.planTransaction.timeStop">Time Stop</span></dt>
+        <dd>
+          <span>{{ planTransaction.timeStop | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="tradePlannerApp.planTransaction.plannedEntryDate">Planned Entry Date</span></dt>
+        <dd>
+          <span>{{ planTransaction.plannedEntryDate | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="tradePlannerApp.planTransaction.plannedExitDate">Planned Exit Date</span></dt>
+        <dd>
+          <span>{{ planTransaction.plannedExitDate | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="tradePlannerApp.planTransaction.entryReason">Entry Reason</span></dt>
+        <dd>
+          <span>{{ planTransaction.entryReason }}</span>
+        </dd>
+        <dt><span jhiTranslate="tradePlannerApp.planTransaction.exitReason">Exit Reason</span></dt>
+        <dd>
+          <span>{{ planTransaction.exitReason }}</span>
+        </dd>
+        <dt><span jhiTranslate="tradePlannerApp.planTransaction.orderStatus">Order Status</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'tradePlannerApp.OrderStatus.' + planTransaction.orderStatus }}">{{ planTransaction.orderStatus }}</span>
+        </dd>
+        <dt><span jhiTranslate="tradePlannerApp.planTransaction.tradingPlan">Trading Plan</span></dt>
+        <dd>
+          <div *ngIf="planTransaction.tradingPlan">
+            <a [routerLink]="['/trading-plan', planTransaction.tradingPlan?.id, 'view']">{{ planTransaction.tradingPlan?.name }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/plan-transaction', planTransaction.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

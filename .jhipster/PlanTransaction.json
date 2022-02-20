@@ -1,0 +1,65 @@
+{
+  "applications": "*",
+  "changelogDate": "20220220224508",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "plan_transaction",
+  "fields": [
+    {
+      "fieldName": "numberOfContracts",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "costPerContract",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "stopLoss",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "technicalStopLoss",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "timeStop",
+      "fieldType": "ZonedDateTime"
+    },
+    {
+      "fieldName": "plannedEntryDate",
+      "fieldType": "ZonedDateTime"
+    },
+    {
+      "fieldName": "plannedExitDate",
+      "fieldType": "ZonedDateTime"
+    },
+    {
+      "fieldName": "entryReason",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "exitReason",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "orderStatus",
+      "fieldType": "OrderStatus",
+      "fieldValues": "Planned,Submitted,Filled"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "PlanTransaction",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityField": "name",
+      "otherEntityName": "tradingPlan",
+      "otherEntityRelationshipName": "planTransaction",
+      "relationshipName": "tradingPlan",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "no"
+}

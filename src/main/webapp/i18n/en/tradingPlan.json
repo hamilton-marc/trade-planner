@@ -1,0 +1,36 @@
+{
+  "tradePlannerApp": {
+    "tradingPlan": {
+      "home": {
+        "title": "Trading Plans",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Trading Plan",
+        "createOrEditLabel": "Create or edit a Trading Plan",
+        "notFound": "No Trading Plans found"
+      },
+      "created": "A new Trading Plan is created with identifier {{ param }}",
+      "updated": "A Trading Plan is updated with identifier {{ param }}",
+      "deleted": "A Trading Plan is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Trading Plan {{ id }}?"
+      },
+      "detail": {
+        "title": "Trading Plan"
+      },
+      "id": "ID",
+      "name": "Name",
+      "underlying": "Underlying",
+      "underlyingDescription": "Underlying Description",
+      "underlyingOutlook": "Underlying Outlook",
+      "underlyingOutlookOtherDesc": "Underlying Outlook Other Desc",
+      "underlyingTrend": "Underlying Trend",
+      "marketOutlook": "Market Outlook",
+      "marketOutlookOtherDesc": "Market Outlook Other Desc",
+      "marketTrend": "Market Trend",
+      "timeFrame": "Time Frame",
+      "strategy": "Strategy",
+      "notes": "Notes",
+      "user": "User"
+    }
+  }
+}

@@ -1,0 +1,82 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="tradingPlan">
+      <h2 data-cy="tradingPlanDetailsHeading"><span jhiTranslate="tradePlannerApp.tradingPlan.detail.title">Trading Plan</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ tradingPlan.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="tradePlannerApp.tradingPlan.name">Name</span></dt>
+        <dd>
+          <span>{{ tradingPlan.name }}</span>
+        </dd>
+        <dt><span jhiTranslate="tradePlannerApp.tradingPlan.underlying">Underlying</span></dt>
+        <dd>
+          <span>{{ tradingPlan.underlying }}</span>
+        </dd>
+        <dt><span jhiTranslate="tradePlannerApp.tradingPlan.underlyingDescription">Underlying Description</span></dt>
+        <dd>
+          <span>{{ tradingPlan.underlyingDescription }}</span>
+        </dd>
+        <dt><span jhiTranslate="tradePlannerApp.tradingPlan.underlyingOutlook">Underlying Outlook</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'tradePlannerApp.TrendOutlook.' + tradingPlan.underlyingOutlook }}">{{
+            tradingPlan.underlyingOutlook
+          }}</span>
+        </dd>
+        <dt><span jhiTranslate="tradePlannerApp.tradingPlan.underlyingOutlookOtherDesc">Underlying Outlook Other Desc</span></dt>
+        <dd>
+          <span>{{ tradingPlan.underlyingOutlookOtherDesc }}</span>
+        </dd>
+        <dt><span jhiTranslate="tradePlannerApp.tradingPlan.underlyingTrend">Underlying Trend</span></dt>
+        <dd>
+          <span>{{ tradingPlan.underlyingTrend }}</span>
+        </dd>
+        <dt><span jhiTranslate="tradePlannerApp.tradingPlan.marketOutlook">Market Outlook</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'tradePlannerApp.TrendOutlook.' + tradingPlan.marketOutlook }}">{{ tradingPlan.marketOutlook }}</span>
+        </dd>
+        <dt><span jhiTranslate="tradePlannerApp.tradingPlan.marketOutlookOtherDesc">Market Outlook Other Desc</span></dt>
+        <dd>
+          <span>{{ tradingPlan.marketOutlookOtherDesc }}</span>
+        </dd>
+        <dt><span jhiTranslate="tradePlannerApp.tradingPlan.marketTrend">Market Trend</span></dt>
+        <dd>
+          <span>{{ tradingPlan.marketTrend }}</span>
+        </dd>
+        <dt><span jhiTranslate="tradePlannerApp.tradingPlan.timeFrame">Time Frame</span></dt>
+        <dd>
+          <span>{{ tradingPlan.timeFrame }}</span>
+        </dd>
+        <dt><span jhiTranslate="tradePlannerApp.tradingPlan.strategy">Strategy</span></dt>
+        <dd>
+          <span>{{ tradingPlan.strategy }}</span>
+        </dd>
+        <dt><span jhiTranslate="tradePlannerApp.tradingPlan.notes">Notes</span></dt>
+        <dd>
+          <span>{{ tradingPlan.notes }}</span>
+        </dd>
+        <dt><span jhiTranslate="tradePlannerApp.tradingPlan.user">User</span></dt>
+        <dd>
+          <span>{{ tradingPlan.user?.login }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/trading-plan', tradingPlan.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>
