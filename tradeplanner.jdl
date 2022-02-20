@@ -1,0 +1,48 @@
+
+enum OrderStatus {
+	Planned,
+    Submitted,
+    Filled
+}
+
+enum TrendOutlook {
+	Unclear,
+    Up,
+    Down,
+    Sidways,
+    Other
+}
+
+entity TradingPlan {
+    name String required minlength(3),
+	underlying String required minlength(1),
+	underlyingDescription String,
+    underlyingOutlook TrendOutlook,
+    underlyingOutlookOtherDesc String,
+    underlyingTrend String,
+    marketOutlook TrendOutlook,
+    marketOutlookOtherDesc String,
+    marketTrend String,
+    timeFrame String,
+    strategy String,
+    notes String
+}
+
+entity PlanTransaction {
+    numberOfContracts Long,
+	costPerContract Double,
+    stopLoss Double,
+    technicalStopLoss Double,
+    timeStop ZonedDateTime,
+    plannedEntryDate ZonedDateTime,
+    plannedExitDate ZonedDateTime,
+    entryReason String,
+    exitReason String,
+    orderStatus OrderStatus
+}
+
+relationship ManyToOne {
+  TradingPlan{user(login)} to User,
+  PlanTransaction{tradingPlan(name)} to TradingPlan
+}
+
