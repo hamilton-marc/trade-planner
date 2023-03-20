@@ -1,0 +1,62 @@
+[
+  {
+    "id": "1",
+    "underlying": "MSFT",
+    "underlyingDescription": "Microsoft Corporation",
+    "marketOutlook" : "S&P and Nasdaq are trending higher",
+    "marketTrend": "up",
+    "underlyingOutlook": "Microsoft is exhibiting higher highs and higher lows",
+    "underlyingTrend": "up",
+    "timeFrame": "weekly",
+    "strategy": "Stock purchase",
+
+    "costPerContract": 32,
+    "numberOfContracts": 100,
+
+    "stopLoss": 28,
+    "technicalStopLoss": 29.5,
+
+    "timeStop": "2019-11-26",
+
+    "plannedTradeEntryDate": "2019-06-26",
+
+    "entryReason": "MSFT is seems to be bouncing off of the bottom of it's upward trednd channel",
+    "contingencies": "If the market experiences a sudden downturn, we may need to abort",
+
+    "status": "planned",
+    "notes": "",
+
+    "createdAt": "2019-05-26T20:00:18-07:00",
+    "updatedAt": "2019-06-06T20:00:22-57:00"
+  },
+  {
+    "id": "2",
+    "underlying": "AAPL",
+    "underlyingDescription": "Apple",
+    "marketOutlook" : "S&P and Nasdaq are trending higher",
+    "marketTrend": "up",
+    "underlyingOutlook": "Apple is exhibiting higher highs and higher lows",
+    "underlyingTrend": "up",
+    "timeFrame": "weekly",
+    "strategy": "Stock purchase",
+
+    "costPerContract": 200,
+    "numberOfContracts": 100,
+
+    "stopLoss": 190,
+    "technicalStopLoss": 195,
+
+    "timeStop": "2019-12-15",
+
+    "plannedTradeEntryDate": "2019-07-01",
+
+    "entryReason": "AAPL is seems to be bouncing off of the bottom of it's upward trednd channel",
+    "contingencies": "If the market experiences a sudden downturn, we may need to abort",
+
+    "status": "planned",
+    "notes": "",
+
+    "createdAt": "2019-06-06T20:00:22-57:00",
+    "updatedAt": "2019-06-06T20:00:22-57:00"
+  }
+]

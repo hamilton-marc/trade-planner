@@ -1,0 +1,140 @@
+<header class="page-header">
+  <div class="container-fluid">
+    <h2 class="no-margin-bottom">New Trading Plan Details</h2>
+  </div>
+</header>
+<br />
+<form *ngIf="tradingPlan | async; else loading" [formGroup]="tradingPlanEntryForm" (submit)="saveTradingPlan()">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="form-group col-sm-4">
+        <label for="underlying">Symbol</label>
+        <input formControlName="underlying" id="underlying" type="text" required class="form-control w-75" />
+      </div>
+      <div class="form-group col-sm-8">
+        <label for="underlyingDescription">Description</label>
+        <input formControlName="underlyingDescription" id="underlyingDescription" type="text"
+          class="form-control w-100" />
+      </div>
+    </div>
+    <br />
+    <div class="row">
+      <div class="form-group col-sm-9">
+        <label for="marketOutlook">Market Outlook</label>
+        <input formControlName="marketOutlook" id="marketOutlook" type="text" class="form-control w-100" />
+      </div>
+      <div class="form-group col-sm-3">
+        <label for="marketTrend">Market Trend</label>
+        <input formControlName="marketTrend" id="marketTrend" type="text" class="form-control w-100" />
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="form-group col-sm-9">
+        <label for="underlyingOutlook">Symbol Outlook</label>
+        <input formControlName="underlyingOutlook" id="underlyingOutlook" type="text" class="form-control w-100" />
+      </div>
+      <div class="form-group col-sm-3">
+        <label for="underlyingTrend">Symbol Trend</label>
+        <input formControlName="underlyingTrend" id="underlyingTrend" type="text" class="form-control w-100" />
+      </div>
+    </div>
+    <br />
+    <div class="row">
+      <div class="form-group col-sm-6">
+        <label for="timeFrame">Timeframe</label>
+        <input formControlName="timeFrame" id="timeFrame" type="text" class="form-control w-100" />
+      </div>
+      <div class="form-group col-sm-6">
+        <label for="strategy">Strategy</label>
+        <input formControlName="strategy" id="strategy" type="text" class="form-control w-100" />
+      </div>
+    </div>
+    <br />
+    <div class="row">
+      <div class="form-group col-sm-6">
+        <label for="costPerContract">Price</label>
+        <input formControlName="costPerContract" id="costPerContract" type="text" class="form-control w-75" />
+      </div>
+      <div class="form-group col-sm-6">
+        <label for="numberOfContracts"># of Contracts</label>
+        <input formControlName="numberOfContracts" id="numberOfContracts" type="text" class="form-control w-75" />
+      </div>
+    </div>
+    <br />
+    <div class="row">
+      <div class="form-group col-sm-4">
+        <label for="stopLoss">Stop</label>
+        <input formControlName="stopLoss" id="stopLoss" type="text" class="form-control w-100" />
+      </div>
+      <div class="form-group col-sm-4">
+        <label for="technicalStopLoss">Technical Stop</label>
+        <input formControlName="technicalStopLoss" id="technicalStopLoss" type="text" class="form-control w-100" />
+      </div>
+      <div class="form-group col-sm-4">
+
+        <label for="timeStop">Time Stop</label>
+        <input formControlName="timeStop" id="timeStop" type="text" class="form-control w-100" />
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="form-group col-sm-6">
+        <label for="limit">Limit</label>
+        <input formControlName="limit" id="limit" type="text" class="form-control w-100" />
+      </div>
+      <div class="form-group col-sm-6">
+        <label for="technicalLimit">Technical Limit</label>
+        <input formControlName="technicalLimit" id="technicalLimit" type="text" class="form-control w-100" />
+      </div>
+    </div>
+    <br />
+    <div class="row">
+      <div class="form-group col-sm-6">
+        <label for="plannedTradeEntryDate">Planned Entry Date</label>
+        <input formControlName="plannedTradeEntryDate" id="plannedTradeEntryDate" type="text"
+          class="form-control w-100" />
+      </div>
+      <div class="form-group col-sm-6">
+        <label for="plannedTradeExitDate">Planned Exit Date</label>
+        <input formControlName="plannedTradeExitDate" id="plannedTradeExitDate" type="text"
+          class="form-control w-100" />
+      </div>
+    </div>
+    <br />
+    <div class="row">
+      <div class="form-group col-sm-12">
+        <label for="entryReason">Entry Reason</label>
+        <input formControlName="entryReason" id="entryReason" type="text" class="form-control w-100" />
+      </div>
+    </div>
+    <div class="row">
+      <div class="form-group col-sm-8">
+        <label for="contingencies">Contingencies</label>
+        <input formControlName="contingencies" id="contingencies" type="text" class="form-control w-100" />
+      </div>
+      <div class="form-group col-sm-4">
+        <label for="status">Status</label>
+        <input formControlName="status" id="status" type="text" class="form-control w-100" />
+      </div>
+    </div>
+    <br />
+    <div class="row">
+      <div class="form-group col-sm-12">
+        <label for="notes">Notes</label>
+        <textarea formControlName="notes" id="notes" rows="3" class="form-control w-100"></textarea>
+      </div>
+    </div>
+    <br />
+    <div class="row">
+      <div class="col-sm-12">
+        <button type="submit" name="save" class="btn btn-primary">Save</button>
+        <button type="button" name="delete" class="btn btn-danger">Delete Plan</button>
+      </div>
+    </div>
+  </div>
+</form>
+
+<ng-template #loading>
+  Loading Trading Plan...
+</ng-template>
